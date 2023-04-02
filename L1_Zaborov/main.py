@@ -50,13 +50,21 @@ def crossover(ind1, ind2):
 
 
 if __name__ == "__main__":
+    random.seed(70)
     population = []
     chromosome = [item for item in range(0, NODES_COUNT)]
+    chromosome.remove(START_NODE)
+    chromosome.remove(FINISH_NODE)
 
-    while len(population) < min(POPULATION_COUNT, math.factorial(NODES_COUNT)):
+    while len(population) < min(POPULATION_COUNT, math.factorial(NODES_COUNT - 2)):
         random.shuffle(chromosome)
-        if chromosome not in population:
-            population.append(chromosome.copy())
+        copy = chromosome.copy()
+        for j in range(NODES_COUNT - 2):
+            if random.random() > .8:
+                copy[j] = -1
+
+        if copy not in population:
+            population.append(copy)
 
     fitnesses = []
     for individual in population:
