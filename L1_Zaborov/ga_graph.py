@@ -9,7 +9,7 @@ import random
 from matplotlib import pyplot as plt
 import networkx as nx
 
-INF = 1000000000  # Очень большое число, обозначающее, что между вершинами нет пути
+INF = 100  # Большое число, обозначающее, что между вершинами нет пути
 
 
 def generate_graph(nodes_count, is_fully_connected, min_val, max_val):

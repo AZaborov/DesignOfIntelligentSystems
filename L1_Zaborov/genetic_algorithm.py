@@ -11,7 +11,7 @@ import math
 NODES_COUNT = 0
 START_NODE = 0
 FINISH_NODE = 0
-INF = 1000000000  # Очень большое число, обозначающее, что между вершинами нет пути
+INF = 100  # Большое число, обозначающее, что между вершинами нет пути
 
 
 class Individual:
@@ -71,6 +71,22 @@ def generate_population(count):
     return population
 
 
+def calculate_path(path, graph):
+    fit = 0
+    for i in range(len(path) - 1):
+        x = path[i]
+        y = path[i + 1]
+
+        distance = graph[x][y]
+        if distance == INF:  # Пути не существует
+            fit = INF
+            break
+        else:
+            fit += distance
+
+    return fit
+
+
 def fitness(population, graph):
     """
     Вычисляем для каждой особи значение функции приспособленности
@@ -79,23 +95,11 @@ def fitness(population, graph):
     :return:
     """
     for ind in population:
-        fit = 0
         chromosome = ind.get_chromosome().copy()
         chromosome.append(FINISH_NODE)
         chromosome.insert(0, START_NODE)
         chromosome = list(filter(lambda a: a != -1, chromosome))
-
-        for i in range(len(chromosome) - 1):
-            x = chromosome[i]
-            y = chromosome[i + 1]
-
-            distance = graph[x][y]
-            if distance == INF:  # Пути не существует
-                fit = INF
-                break
-            else:
-                fit += distance
-
+        fit = calculate_path(chromosome, graph)
         ind.set_fitness_value(fit)
 
 
@@ -155,9 +159,10 @@ def crossover(selected):
     return children
 
 
-def mutation(children, probability):
+def mutation(children, probability, graph):
     """
     Мутация
+    :param graph: граф для проверки корректности значения приспособленности после мутации
     :param children: новое поколение
     :param probability: вероятность мутации
     :return:
@@ -172,8 +177,8 @@ def mutation(children, probability):
             if random.random() < probability:
                 chrom = children[i].get_chromosome().copy()
                 chrom[j] = random.choice(choice)
-                children[i] = Individual(chrom)
-                break
+                if calculate_path(chrom, graph) != INF:
+                    children[i] = Individual(chrom)
 
 
 def process(graph, epoch_count, pop_count, start, finish, mut_prob):
@@ -197,12 +202,20 @@ def process(graph, epoch_count, pop_count, start, finish, mut_prob):
     random.seed(99)
     population = generate_population(pop_count)
 
+    minf_itness_values, avg_fitness_values = [], []
     for i in range(epoch_count):
         fitness(population, graph)
+
+        fitness_values = [x.get_fitness_value() for x in population]
+        min_fitness = min(fitness_values)
+        avg_fitness = sum(fitness_values) / len(fitness_values)
+        minf_itness_values.append(min_fitness)
+        avg_fitness_values.append(avg_fitness)
+
         selected = selection(population)
         children = crossover(selected)
         before_mutation = children.copy()
-        mutation(children, mut_prob)
+        mutation(children, mut_prob, graph)
 
         steps.append([population.copy(), selected.copy(), before_mutation.copy(), children.copy()])
         cycle.append(children.copy())
@@ -210,4 +223,14 @@ def process(graph, epoch_count, pop_count, start, finish, mut_prob):
 
     fitness(population, graph)
     population.sort(key=lambda x: x.get_fitness_value(), reverse=False)
+
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots()
+    ax.plot(minf_itness_values, color='red')
+    ax.plot(avg_fitness_values, color='blue')
+    plt.xlabel('Поколение')
+    plt.ylabel('Мин/средняя приспособленность')
+    plt.title('Зависимость минимальной и средней приспособленности от поколения')
+    plt.show()
+
     return population[0], steps, cycle
