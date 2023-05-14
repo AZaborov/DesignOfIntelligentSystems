@@ -1,0 +1,81 @@
+<mxfile host="app.diagrams.net" modified="2023-05-14T10:33:25.355Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="gR0_SYXb1yY7Y-GIHBCg" version="21.1.8" type="device">
+  <diagram name="Страница 1" id="55Ld98ryis47k5NQ7491">
+    <mxGraphModel dx="1434" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="uwN-KtzIm6JVs4Du7jeU-1" target="uwN-KtzIm6JVs4Du7jeU-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-1" value="Начало" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="20" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-2" value="Конец" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="710" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="uwN-KtzIm6JVs4Du7jeU-3" target="uwN-KtzIm6JVs4Du7jeU-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-3" value="Заполнить матрицу весов 784 на 10 случайными значениями" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="100" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="uwN-KtzIm6JVs4Du7jeU-5" target="uwN-KtzIm6JVs4Du7jeU-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-5" value="Заполнить матрицу cмещений 10 на 1 случайными значениями" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="170" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="uwN-KtzIm6JVs4Du7jeU-7" target="uwN-KtzIm6JVs4Du7jeU-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-7" value="Преобразовать входное изображение из выборки в вектор" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="280" y="240" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="uwN-KtzIm6JVs4Du7jeU-9" target="uwN-KtzIm6JVs4Du7jeU-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-9" value="Посчитать взвешенные суммы на каждом выходном нейроне" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="280" y="310" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="uwN-KtzIm6JVs4Du7jeU-11" target="uwN-KtzIm6JVs4Du7jeU-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-11" value="Выбрать нейрон, взвешенная сумма которого самая большая" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="280" y="380" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="uwN-KtzIm6JVs4Du7jeU-13" target="uwN-KtzIm6JVs4Du7jeU-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-13" value="Вычислить значение ошибки (из ожидаемого вычесть реальное)" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="280" y="450" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="uwN-KtzIm6JVs4Du7jeU-15" target="uwN-KtzIm6JVs4Du7jeU-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-15" value="Откорректировать матрицу весов" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="280" y="520" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-20" value="Да" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="uwN-KtzIm6JVs4Du7jeU-17" target="uwN-KtzIm6JVs4Du7jeU-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="uwN-KtzIm6JVs4Du7jeU-17">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="220" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="630" y="625" />
+              <mxPoint x="630" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-23" value="Нет" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="uwN-KtzIm6JVs4Du7jeU-22">
+          <mxGeometry x="-0.8939" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uwN-KtzIm6JVs4Du7jeU-17" value="Заданное количество эпох прошло?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="585" width="200" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
