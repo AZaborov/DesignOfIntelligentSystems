@@ -32,7 +32,8 @@ class Window(QMainWindow):
         self.clear_button.clicked.connect(self.clear_button_clicked)
         self.learn_button.clicked.connect(self.learn_button_clicked)
         self.identify_button.clicked.connect(self.identify_button_clicked)
-        self.show_weights_button.clicked.connect(self.show_weights_button_clicked)
+        self.show_weights_before_button.clicked.connect(self.show_weights_before_button_clicked)
+        self.show_weights_after_button.clicked.connect(self.show_weights_after_button_clicked)
 
     def mouseMoveEvent(self, e):
         if self.last_x is None:
@@ -64,13 +65,11 @@ class Window(QMainWindow):
     def learn_button_clicked(self):
         epoch_count = self.epoch_count_spin_box.value()
         learning_rate = self.learning_rate_spin_box.value()
-        self.learning_progress_bar.setMaximum(epoch_count)
-        self.epoch_slider.setMaximum(epoch_count - 1)
         self.epochs = []
 
-        for e, w in self.perceptron.learn(epoch_count, learning_rate):
-            self.learning_progress_bar.setValue(e)
-            self.status_label.setText("Идёт обучение" + '.' * (e // 60 % 5))
+        for e, i, w in self.perceptron.learn(epoch_count, learning_rate):
+            self.learning_progress_bar.setValue(i)
+            self.status_label.setText(f"Идёт обучение (Эпоха {e + 1} из {epoch_count})")
             self.epochs.append(w)
 
         self.learning_progress_bar.setValue(0)
@@ -80,12 +79,20 @@ class Window(QMainWindow):
         result = self.perceptron.stimulate(pixmap2array(self.input_label.pixmap()))
         self.status_label.setText(f"Я думаю, это {np.argmax(result)}")
 
-    def show_weights_button_clicked(self):
+    def show_weights_before_button_clicked(self):
         if not self.epochs:
             return
+        else:
+            self.show_weights(self.epochs[0].T)
 
+    def show_weights_after_button_clicked(self):
+        if not self.epochs:
+            return
+        else:
+            self.show_weights(self.epochs[len(self.epochs) - 1].T)
+
+    def show_weights(self, weights):
         fig = plt.figure()
-        weights = self.epochs[self.epoch_slider.value()].T
         for i in range(weights.shape[0]):
             fig.add_subplot(2, 5, i + 1).set_title(i)
             fig.tight_layout()

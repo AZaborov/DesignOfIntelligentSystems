@@ -57,7 +57,7 @@
      <rect>
       <x>450</x>
       <y>40</y>
-      <width>91</width>
+      <width>71</width>
       <height>22</height>
      </rect>
     </property>
@@ -92,21 +92,21 @@
      <rect>
       <x>450</x>
       <y>90</y>
-      <width>91</width>
+      <width>41</width>
       <height>22</height>
      </rect>
     </property>
     <property name="minimum">
-     <number>100</number>
+     <number>1</number>
     </property>
     <property name="maximum">
-     <number>600000</number>
+     <number>20</number>
     </property>
     <property name="singleStep">
-     <number>100</number>
+     <number>1</number>
     </property>
     <property name="value">
-     <number>6000</number>
+     <number>5</number>
     </property>
    </widget>
    <widget class="QPushButton" name="clear_button">
@@ -175,6 +175,9 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="maximum">
+     <number>60000</number>
+    </property>
     <property name="value">
      <number>0</number>
     </property>
@@ -190,38 +193,6 @@
     </property>
     <property name="text">
      <string>Прогресс обучения</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="epoch_count_label_3">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>155</y>
-      <width>261</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Выбрать эпоху для просмотра весов</string>
-    </property>
-   </widget>
-   <widget class="QSlider" name="epoch_slider">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>190</y>
-      <width>261</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>6000</number>
-    </property>
-    <property name="singleStep">
-     <number>1</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
     </property>
    </widget>
    <widget class="QLabel" name="epoch_label">
@@ -262,17 +233,32 @@
      <string>Веса</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="show_weights_button">
+   <widget class="QPushButton" name="show_weights_before_button">
     <property name="geometry">
      <rect>
       <x>320</x>
       <y>110</y>
       <width>111</width>
-      <height>23</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Посмотреть веса</string>
+     <string>Посмотреть веса 
+до обучения</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="show_weights_after_button">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>160</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Посмотреть веса 
+после обучения</string>
     </property>
    </widget>
   </widget>
